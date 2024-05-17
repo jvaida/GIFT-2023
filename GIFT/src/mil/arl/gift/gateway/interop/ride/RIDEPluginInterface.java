@@ -1081,7 +1081,8 @@ public class RIDEPluginInterface extends AbstractInteropInterface {
         EntityOuterClass.Health health = msg.getHealth();
                 
         EntityState entityState = getEntityStateFromRIDEEntity(transform, health);
-                        
+        logger.info("RIDE handleEntityUpdateProtoMessage msg- transform:"+transform+"health:"+health+"entityState:"+entityState);
+
         GatewayModule.getInstance().sendMessageToGIFT(entityState, MessageTypeEnum.ENTITY_STATE, this);
     }
 
@@ -1091,7 +1092,7 @@ public class RIDEPluginInterface extends AbstractInteropInterface {
      * @param msg the EntityUpdatesMessage
      */
     private void handleEntityUpdatesProtoMessage(EntityEvents.EntityUpdatesMessage msg) {
-        
+        logger.info("RIDE handleEntityUpdatesProtoMessage msg: "+msg);
         List<EntityEvents.EntityUpdateMessage> updateList = msg.getUpdatesList();
         for (EntityEvents.EntityUpdateMessage entityUpdate : updateList) {
             handleEntityUpdateProtoMessage(entityUpdate);
@@ -1120,7 +1121,8 @@ public class RIDEPluginInterface extends AbstractInteropInterface {
      * @param msg the EntityFireWeaponMessage
      */
     private void handleEntityFireWeaponProtoMessage(EntityEvents.EntityFireWeaponMessage msg) {
-        
+        logger.info("RIDE handleEntityFireWeaponProtoMessage msg "+msg);
+
         EntityOuterClass.EntityTransform firingEntityTransform = msg.getFiringEntity();
         EntityOuterClass.EntityTransform targetEntityTransform = msg.getTarget();
         EntityOuterClass.Vector3 weaponImpactLocation = msg.getImpactLocation();
@@ -1159,7 +1161,8 @@ public class RIDEPluginInterface extends AbstractInteropInterface {
                     resultEnum);
             
             GatewayModule.getInstance().sendMessageToGIFT(detonation, MessageTypeEnum.DETONATION, this);
-            
+            logger.info("detonation"+detonation);
+
             WeaponFire weaponFire = new WeaponFire(
                     feIdentifier, 
                     teIdentifier, 
@@ -1170,6 +1173,7 @@ public class RIDEPluginInterface extends AbstractInteropInterface {
                     burstDescriptor);
             
             GatewayModule.getInstance().sendMessageToGIFT(weaponFire, MessageTypeEnum.WEAPON_FIRE, this);
+            logger.info("weaponFire"+weaponFire);
         }
     }
     

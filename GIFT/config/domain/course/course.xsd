@@ -1019,6 +1019,7 @@
 					<xs:element ref="UnityInteropInputs"/>
 					<xs:element ref="HAVENInteropInputs"/>
 					<xs:element ref="RIDEInteropInputs"/>
+					<xs:element ref="DreamscapeInteropInputs"/>
                 </xs:choice>
             </xs:sequence>
         </xs:complexType>
@@ -1451,6 +1452,33 @@
                     </xs:complexType>
                 </xs:element>
 				<xs:element ref="logFile" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	<xs:element name="DreamscapeInteropInputs">
+        <xs:annotation>
+            <xs:appinfo>
+                <fg:node-info exposed="true" message="Dreamscape Unity Interoperability Interface Inputs">
+                    <fg:message>By specifying the Dreamscape Interop element for the Training Application, the Gateway module will be configured to use the Dreamscape Interop configuration specified in the interopConfig.xml for the duration of the lesson that uses this instance of the training application.</fg:message>
+                </fg:node-info>
+            </xs:appinfo>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="loadArgs">
+                    <xs:annotation>
+                        <xs:appinfo>
+                            <fg:node-info exposed="true" message="Load Arguments">
+                                <fg:message>These are the arguments sent to the Gateway module with the Siman.Load message. The arguments are sent to the Dreamscape Unity application via a JSON-encoded SIMAN Load message.</fg:message>
+                            </fg:node-info>
+                        </xs:appinfo>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+							<xs:element minOccurs="0" maxOccurs="unbounded" ref="common:nvpair"/>
+						</xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

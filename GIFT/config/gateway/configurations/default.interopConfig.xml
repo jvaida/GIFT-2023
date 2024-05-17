@@ -149,7 +149,7 @@
             <name>RIDE Plugin</name>
             <RIDE>
                 <networkPort>11000</networkPort>
-                <networkAddress>RIDEHostIpAddress</networkAddress>
+                <networkAddress>10.203.43.114</networkAddress>
                 <grpcNetworkPort>5001</grpcNetworkPort>
             </RIDE>
         </InteropInterfaceConfig>
@@ -162,6 +162,15 @@
                 <ExternalServerNetworkPort>10565</ExternalServerNetworkPort>
                 <ServerNetworkPort>10564</ServerNetworkPort>
             </XML-RPC>
+        </InteropInterfaceConfig>
+                <InteropInterfaceConfig refID="18">
+            <available>true</available>
+            <impl>gateway.interop.dreamscape.DreamscapePluginInterface</impl>
+            <name>Dreamscape Plugin</name>
+            <Unity>
+                <networkPort>5000</networkPort>
+                <networkAddress>127.0.0.1</networkAddress>
+            </Unity>
         </InteropInterfaceConfig>
     </interfaceConfigurations>
 </InteropConfig>
